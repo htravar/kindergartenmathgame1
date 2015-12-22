@@ -1,0 +1,35 @@
+#!/bin/bash
+#author: Heather Travar, Nov. 2015
+#Math game comparing numbers for kindergarten.
+#Two children each hold a card in their hand showing a number.
+#Children state which number is greater or if they are equal, then the programs tells them if they're right.
+#Whether they are right or wrong, discuss why.
+
+COUNTER=0 #to count rounds
+while [ $COUNTER -lt 4 ]; do
+
+ let COUNTER=COUNTER+1
+ #get numbers from both teams
+ echo "TEAM A, what is your number?"
+ read NUMBERA
+
+ echo "Team B, what is your number?"
+ read NUMBERB
+echo
+echo
+ if [ $NUMBERA -gt $NUMBERB ]
+  then
+   tput smso;echo -e "\e[31mTEAM A HAS MORE THAN TEAM B!\e[0m"
+   tput smso;echo -e "\e[101mTHE WINNER OF ROUND $COUNTER IS TEAM A!\e[0m"
+
+ elif [ $NUMBERA -lt $NUMBERB ]
+  then
+   tput smso;echo -e "\e[32mTEAM B HAS MORE THAN TEAM A!\e[0m"
+   tput smso;echo -e "\e[42mTHE WINNER OF ROUND $COUNTER IS TEAM B!\e[0m"
+ else
+  tput smso;echo -e "\e[35mTEAM A AND TEAM B HAVE EQUAL NUMBERS.\e[0m"
+  echo -e "\e[7mTHERE IS A TIE IN ROUND $COUNTER.\e[0m"
+ fi
+echo
+echo
+done
